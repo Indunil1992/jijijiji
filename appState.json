@@ -1,0 +1,197 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "c1347475-ad94-4a0d-94d7-c7d59462e2a3": {
+        "id": "c1347475-ad94-4a0d-94d7-c7d59462e2a3",
+        "parent": null,
+        "name": "jijijiji",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "dffbb346-0662-496b-bbd7-d15c00f0bfb1",
+          "93f65cbb-4cb5-4255-8913-cc3cbef6e2f0"
+        ],
+        "isRemovable": false,
+        "filePath": "jijijiji"
+      },
+      "dffbb346-0662-496b-bbd7-d15c00f0bfb1": {
+        "id": "dffbb346-0662-496b-bbd7-d15c00f0bfb1",
+        "parent": "c1347475-ad94-4a0d-94d7-c7d59462e2a3",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "jijijiji/lambda.js",
+        "code": "let SL_AWS = require('slappforge-sdk-aws');\nlet connectionManager = require('./ConnectionManager');\nconst rds = new SL_AWS.RDS(connectionManager);\nlet AWS = require('aws-sdk');\nconst rekognition = new AWS.Rekognition();\n\nexports.handler = function (event, context, callback) {\n\n    // You can pass the existing connection to this function.\n    // A new connection will be created if it's not present as the third param \n    // You must always end/destroy the DB connection after it's used\n    rds.query({\n        instanceIdentifier: 'hhh',\n        query: 'name, age',\n        inserts: [\"name\"]\n    }, function (error, results, connection) {\n        if (error) {\n            console.log(\"Error occurred\");\n            throw error;\n        } else {\n            console.log(\"Success\")\n            console.log(results);\n        }\n\n        connection.end();\n    });\n\n    // You must always end/destroy the DB connection after it's used\n    rds.beginTransaction({\n        instanceIdentifier: 'uiuijjj'\n    }, function (error, connection) {\n        if (error) {\n            throw error;\n        }\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": [],
+        "testCases": {
+          "dd9b4e48-ecae-4560-9cee-a7d02c1a4bdd": {
+            "id": "dd9b4e48-ecae-4560-9cee-a7d02c1a4bdd",
+            "name": "Test event",
+            "functionId": "dffbb346-0662-496b-bbd7-d15c00f0bfb1",
+            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
+            "eventTemplate": "hello-world"
+          }
+        }
+      },
+      "93f65cbb-4cb5-4255-8913-cc3cbef6e2f0": {
+        "id": "93f65cbb-4cb5-4255-8913-cc3cbef6e2f0",
+        "parent": "c1347475-ad94-4a0d-94d7-c7d59462e2a3",
+        "name": "ConnectionManager.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "jijijiji/ConnectionManager.js",
+        "code": "module.exports = function() {\n    this.dbConnections = [];\n\n    this.dbConnections[\"hhh\"] = {\n        host: process.env.EndPoint_rdsHhh,\n        port: process.env.Port_rdsHhh,\n        user: process.env.User_rdsHhh,\n        password: process.env.Password_rdsHhh,\n        database: \"ccc\"\n    };\n    this.dbConnections[\"uiuijjj\"] = {\n        host: process.env.EndPoint_rdsUiuijjj,\n        port: process.env.Port_rdsUiuijjj,\n        user: process.env.User_rdsUiuijjj,\n        password: process.env.Password_rdsUiuijjj,\n        database: \"jiu\"\n    };\n};"
+      }
+    },
+    "rootNode": "c1347475-ad94-4a0d-94d7-c7d59462e2a3",
+    "openFiles": [
+      "dffbb346-0662-496b-bbd7-d15c00f0bfb1"
+    ],
+    "currentFileId": "dffbb346-0662-496b-bbd7-d15c00f0bfb1",
+    "resources": {
+      "rds-hhh": {
+        "name": "rds-hhh",
+        "type": "RDS",
+        "config": {
+          "editMode": false,
+          "operation": 0,
+          "rdsInstance": {
+            "rdsEngineType": "mysql",
+            "rdsEdition": "",
+            "rdsInstanceSpec": {
+              "dbInstanceClass": "db.t2.micro",
+              "dbLicenseModel": "general-public-license",
+              "dbEngineVersion": "5.7.19"
+            },
+            "rdsSetting": {
+              "instanceIdentifier": "hhh",
+              "masterUsername": "hhh",
+              "masterPassword": "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+            },
+            "rdsDBOptions": {
+              "dbName": "ccc",
+              "dbPort": "3232"
+            },
+            "rdsInstanceArn": "",
+            "Host": "",
+            "doesExist": false,
+            "initializationQuery": "vvv",
+            "alreadyDeployed": false
+          },
+          "rdsInstanceResources": [],
+          "projectRegion": "us-east-1",
+          "mode": 0,
+          "additionalFiles": [],
+          "params": {
+            "query": "name, age",
+            "inserts": "\"name\""
+          },
+          "isGlobalEditMode": false,
+          "enableInject": true,
+          "isNewFromGlobal": false
+        }
+      },
+      "rds-uiuijjj": {
+        "name": "rds-uiuijjj",
+        "type": "RDS",
+        "config": {
+          "editMode": false,
+          "operation": 1,
+          "rdsInstance": {
+            "rdsEngineType": "mysql",
+            "rdsEdition": "",
+            "rdsInstanceSpec": {
+              "dbInstanceClass": "db.t2.micro",
+              "dbLicenseModel": "general-public-license",
+              "dbEngineVersion": "5.7.19"
+            },
+            "rdsSetting": {
+              "instanceIdentifier": "uiuijjj",
+              "masterUsername": "jjjjjj",
+              "masterPassword": "jiuiojiui"
+            },
+            "rdsDBOptions": {
+              "dbName": "jiu",
+              "dbPort": "8888"
+            },
+            "rdsInstanceArn": "",
+            "Host": "",
+            "doesExist": false,
+            "initializationQuery": "uu",
+            "alreadyDeployed": false
+          },
+          "rdsInstanceResources": [],
+          "projectRegion": "us-east-1",
+          "mode": 0,
+          "additionalFiles": [],
+          "params": {
+            "query": "",
+            "inserts": ""
+          },
+          "isGlobalEditMode": false,
+          "enableInject": true,
+          "isNewFromGlobal": false
+        }
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        },
+        "slappforge-sdk-aws": {
+          "name": "slappforge-sdk-aws",
+          "language": "javascript",
+          "version": "0.0.5",
+          "dev": false,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "jijijiji",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1574769764202
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "jijijiji",
+      "url": "https://github.com/Indunil1992/jijijiji"
+    }
+  }
+}
